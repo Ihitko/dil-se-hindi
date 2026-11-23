@@ -1,4 +1,5 @@
 {
+ "id": "./",
  "name": "Dil Se Hindi",
  "short_name": "Dil Se",
  "description": "Learn Hindi for the one you love.",
@@ -6,8 +7,8 @@
  "scope": "./",
  "display": "standalone",
  "orientation": "portrait",
- "background_color": "#F2F2F7",
- "theme_color": "#FF3B5C",
+ "background_color": "#15102E",
+ "theme_color": "#15102E",
  "lang": "en",
  "icons": [
   {
