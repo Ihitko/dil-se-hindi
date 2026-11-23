@@ -27,10 +27,10 @@
   --bg:#F2F2F7; --surface:#FFFFFF; --surface2:#F7F7FA; --sunk:rgba(118,118,128,.12); --fill:rgba(120,120,128,.16);
   --ink:#1C1C1E; --muted:#6E6E73; --line:rgba(60,60,67,.16); --glass:rgba(249,249,251,.78);
   /* tint + vivid system colours */
-  --tint:#0071E3; --on-tint:#FFFFFF; --tint-soft:rgba(0,113,227,.12);
+  --tint:#D92D5A; --on-tint:#FFFFFF; --tint-soft:rgba(217,45,90,.09);
   --marigold:#FF9500; --marigold-ink:#C45200; --marigold-soft:rgba(255,149,0,.14); --on-marigold:#FFFFFF;
-  --peacock:#0071E3; --peacock-soft:rgba(0,113,227,.12); --on-peacock:#FFFFFF;
-  --rose:#FF2D55; --rose-soft:rgba(255,45,85,.12);
+  --peacock:#D92D5A; --peacock-soft:rgba(217,45,90,.09); --on-peacock:#FFFFFF;
+  --rose:#D92D5A; --rose-soft:rgba(217,45,90,.09);
   --purple:#AF52DE; --indigo:#5856D6; --teal:#30B0C7; --mint:#00C7BE;
   --good:#1F8A3D; --good-soft:rgba(52,199,89,.16); --on-good:#FFFFFF;
   --bad:#D70015; --bad-soft:rgba(255,59,48,.12); --on-bad:#FFFFFF;
@@ -47,10 +47,10 @@
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#000000; --surface:#1C1C1E; --surface2:#2C2C2E; --sunk:rgba(118,118,128,.24); --fill:rgba(120,120,128,.32);
   --ink:#F5F5F7; --muted:#98989F; --line:rgba(84,84,88,.6); --glass:rgba(22,22,24,.74);
-  --tint:#0A84FF; --on-tint:#FFFFFF; --tint-soft:rgba(10,132,255,.2);
+  --tint:#F0476F; --on-tint:#FFFFFF; --tint-soft:rgba(240,71,111,.16);
   --marigold:#FF9F0A; --marigold-ink:#FFB340; --marigold-soft:rgba(255,159,10,.2); --on-marigold:#1C1C1E;
-  --peacock:#0A84FF; --peacock-soft:rgba(10,132,255,.2); --on-peacock:#FFFFFF;
-  --rose:#FF375F; --rose-soft:rgba(255,55,95,.2);
+  --peacock:#F0476F; --peacock-soft:rgba(240,71,111,.16); --on-peacock:#FFFFFF;
+  --rose:#F0476F; --rose-soft:rgba(240,71,111,.16);
   --purple:#BF5AF2; --indigo:#5E5CE6; --teal:#40C8E0; --mint:#63E6E2;
   --good:#30D158; --good-soft:rgba(48,209,88,.18); --on-good:#00230C;
   --bad:#FF453A; --bad-soft:rgba(255,69,58,.18); --on-bad:#2A0300;
@@ -59,10 +59,10 @@
 :root[data-theme="dark"]{
   --bg:#000000; --surface:#1C1C1E; --surface2:#2C2C2E; --sunk:rgba(118,118,128,.24); --fill:rgba(120,120,128,.32);
   --ink:#F5F5F7; --muted:#98989F; --line:rgba(84,84,88,.6); --glass:rgba(22,22,24,.74);
-  --tint:#0A84FF; --on-tint:#FFFFFF; --tint-soft:rgba(10,132,255,.2);
+  --tint:#F0476F; --on-tint:#FFFFFF; --tint-soft:rgba(240,71,111,.16);
   --marigold:#FF9F0A; --marigold-ink:#FFB340; --marigold-soft:rgba(255,159,10,.2); --on-marigold:#1C1C1E;
-  --peacock:#0A84FF; --peacock-soft:rgba(10,132,255,.2); --on-peacock:#FFFFFF;
-  --rose:#FF375F; --rose-soft:rgba(255,55,95,.2);
+  --peacock:#F0476F; --peacock-soft:rgba(240,71,111,.16); --on-peacock:#FFFFFF;
+  --rose:#F0476F; --rose-soft:rgba(240,71,111,.16);
   --purple:#BF5AF2; --indigo:#5E5CE6; --teal:#40C8E0; --mint:#63E6E2;
   --good:#30D158; --good-soft:rgba(48,209,88,.18); --on-good:#00230C;
   --bad:#FF453A; --bad-soft:rgba(255,69,58,.18); --on-bad:#2A0300;
@@ -399,16 +399,6 @@ h1,h2,h3{text-wrap:balance;margin:0;font-family:var(--f-display);letter-spacing:
 .subtitle{margin:-8px 4px 16px;color:var(--muted);font-size:15px}
 .cell-main .ce{font-style:normal;font-size:12px;font-weight:600;color:var(--rose)}
 
-/* ---- layer 0: time-of-day sky behind the Learn screen ---- */
-.sky{position:fixed;inset:0 0 auto;height:min(72vh,600px);z-index:0;pointer-events:none;will-change:transform,opacity;
-  background:radial-gradient(110% 75% at 15% -5%,var(--s1),transparent 62%),radial-gradient(85% 65% at 95% 8%,var(--s2),transparent 66%),linear-gradient(180deg,var(--s3),transparent 85%);
-  -webkit-mask-image:linear-gradient(#000 45%,transparent);mask-image:linear-gradient(#000 45%,transparent)}
-.sky.dawn{--s1:rgba(255,149,0,.55);--s2:rgba(255,59,92,.32);--s3:rgba(255,200,120,.38)}
-.sky.day{--s1:rgba(90,200,250,.5);--s2:rgba(255,214,10,.28);--s3:rgba(160,215,255,.4)}
-.sky.dusk{--s1:rgba(255,105,60,.55);--s2:rgba(224,17,95,.38);--s3:rgba(255,150,110,.32)}
-.sky.night{--s1:rgba(40,70,190,.55);--s2:rgba(10,132,255,.28);--s3:rgba(20,40,100,.45)}
-.sky::after{content:"";position:absolute;inset:0;background-image:radial-gradient(1.2px 1.2px at 20% 30%,rgba(255,255,255,.9),transparent),radial-gradient(1px 1px at 70% 18%,rgba(255,255,255,.8),transparent),radial-gradient(1.4px 1.4px at 85% 42%,rgba(255,255,255,.7),transparent),radial-gradient(1px 1px at 40% 12%,rgba(255,255,255,.8),transparent),radial-gradient(1px 1px at 55% 50%,rgba(255,255,255,.6),transparent);opacity:0}
-.sky.night::after{opacity:1}
 .wrap{position:relative;z-index:1}
 .greet{margin:18px 4px 18px;display:flex;flex-direction:column;gap:2px}
 .greet .gh{font-size:40px;font-weight:700;line-height:1.15;letter-spacing:0}
@@ -444,6 +434,114 @@ h1,h2,h3{text-wrap:balance;margin:0;font-family:var(--f-display);letter-spacing:
 .install img{width:44px;height:44px;border-radius:10px;flex:none}
 .install small{color:var(--muted);display:block}
 .xfer{width:100%;min-height:70px;font:inherit;font-size:16px;padding:10px 12px;border-radius:12px;border:0;background:var(--sunk);color:var(--ink);resize:vertical}
+
+/* ===== Calm layer: one accent, more space, fewer boxes ===== */
+body{font-size:17px}
+.head{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;padding:18px 4px 6px}
+.head.slim{padding-top:12px;justify-content:flex-end}
+.head-text{min-width:0}
+.head-cap{margin:0 0 2px;font-size:15px;color:var(--muted);font-weight:500}
+.head-cap .deva{font-weight:600;color:var(--ink)}
+.head-chips{display:flex;gap:6px;padding-bottom:6px}
+.large-title{margin:0;font-size:34px;font-weight:700;letter-spacing:-.022em}
+.chip{background:var(--surface);box-shadow:inset 0 0 0 1px var(--line)}
+.chip.xp{color:var(--ink)} .chip.xp .icon{color:var(--tint)}
+.lede{margin:6px 4px 16px;color:var(--muted);font-size:16px;line-height:1.5;max-width:52ch}
+.today-card{background:var(--surface);border-radius:20px;padding:18px;margin:12px 0 22px;display:flex;flex-direction:column;gap:16px;box-shadow:0 1px 2px rgba(0,0,0,.04),0 10px 30px -18px rgba(0,0,0,.25)}
+.tc-top{display:flex;align-items:center;gap:16px}
+.goal-ring{width:64px;height:64px;flex:none}
+.tc-stats{display:flex;flex-direction:column;gap:1px;min-width:0}
+.tc-stats b{font-size:22px;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.tc-stats b small{font-size:15px;font-weight:500;color:var(--muted);letter-spacing:0}
+.tc-stats span{font-size:14px;color:var(--muted)}
+.btn.cta{display:flex;flex-direction:column;align-items:center;gap:1px;padding:14px 18px;border-radius:14px}
+.btn.cta small{font-size:13px;font-weight:500;opacity:.85}
+.tc-links{display:flex;flex-wrap:wrap;gap:4px 18px;justify-content:center;margin-top:-4px}
+.link{border:0;background:none;color:var(--tint);font-weight:600;font-size:15px;padding:8px 2px;cursor:pointer;min-height:44px}
+.install{position:relative;display:flex;gap:12px;align-items:center;background:var(--surface);backdrop-filter:none;-webkit-backdrop-filter:none;border-radius:16px;padding:10px 44px 10px 12px;margin:0 0 20px;box-shadow:inset 0 0 0 1px var(--line)}
+.install img{width:40px;height:40px;border-radius:9px}
+.install b{font-size:15px}
+.install small{font-size:13px}
+.install .x{position:absolute;right:2px;top:50%;transform:translateY(-50%);width:44px;height:44px;border:0;background:none;color:var(--muted);display:grid;place-items:center;cursor:pointer}
+.install .x .icon{width:16px;height:16px}
+.seg{margin:0 0 26px}
+.seg button{flex-direction:row;gap:6px;justify-content:center;padding:8px 6px;font-size:15px}
+.seg button .deva{font-weight:500;color:var(--muted);font-size:14px}
+.stage{gap:12px;margin-bottom:30px}
+.stage-h{gap:4px;padding:0 4px}
+.sh-row{display:flex;align-items:flex-end;justify-content:space-between;gap:12px}
+.caption{margin:0;font-size:13px;color:var(--muted);font-weight:500}
+.stage-h h2{font-size:24px}
+.count{font-size:15px;color:var(--muted);font-weight:600;font-variant-numeric:tabular-nums;padding-bottom:3px}
+.can{margin:2px 0 6px;color:var(--muted);font-size:15px;line-height:1.45}
+.rekha{border-top-width:3px;border-top-color:var(--line);height:20px;gap:5px;margin-top:2px}
+.rekha i::after{width:3px;margin-left:-1.5px;height:calc(3px + var(--h) * 5px)}
+.rekha i.part::after{background:var(--tint)}
+.group{border-radius:16px;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.group > * + *{border-top:0;box-shadow:inset 0 .5px 0 var(--line)}
+.row{all:unset;box-sizing:border-box;display:flex;align-items:center;gap:14px;width:100%;padding:12px 14px 12px 14px;min-height:64px;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:background .15s}
+.row:hover{background:var(--surface2)}
+.row:active{background:var(--sunk)}
+.row:focus-visible{outline:3px solid var(--tint);outline-offset:-3px;border-radius:16px}
+.row[disabled]{cursor:default}
+.row[disabled]:hover,.row[disabled]:active{background:transparent}
+.glyph-tile{width:44px;height:44px;border-radius:11px;flex:none;display:grid;place-items:center;font-family:var(--f-deva);font-weight:600;line-height:1;color:var(--ink);background:var(--surface2);box-shadow:inset 0 0 0 1px var(--line);overflow:hidden}
+.glyph-tile.chat{color:var(--tint);background:var(--tint-soft);box-shadow:none}
+.glyph-tile.chat .icon{width:22px;height:22px}
+.row.next .glyph-tile{background:var(--tint);color:#fff;box-shadow:none}
+.row.done .glyph-tile{background:var(--good-soft);color:var(--good);box-shadow:none}
+.row.locked .glyph-tile{color:var(--muted);background:transparent}
+.row-main{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.row-main b{font-size:17px;font-weight:600;letter-spacing:-.012em;line-height:1.25}
+.row-main > span{font-size:14px;color:var(--muted);line-height:1.3}
+.row.locked .row-main b{color:var(--muted);font-weight:500}
+.row.next .row-main b{color:var(--ink)}
+.thin{display:block;height:3px;border-radius:2px;background:var(--fill);margin-top:6px;max-width:160px;overflow:hidden}
+.thin i{display:block;height:100%;background:var(--tint);border-radius:2px}
+.row-end{flex:none;color:var(--muted);display:grid;place-items:center;opacity:.7}
+.row-end .icon{width:18px;height:18px}
+.done-badge{width:24px;height:24px;border-radius:50%;background:var(--good);color:#fff;display:grid;place-items:center}
+.done-badge .icon{width:15px;height:15px}
+.foot-note{margin:0 4px;color:var(--muted);font-size:13px;text-align:center}
+.us-head{display:flex;gap:14px;align-items:flex-start}
+.us-head h2{font-size:24px}
+.us-head p{margin:4px 0 0;font-size:15px}
+.glyph-tile.lg{width:60px;height:60px;border-radius:14px;background:var(--tint);color:#fff;box-shadow:none}
+.us-stats{display:grid;grid-template-columns:repeat(3,1fr);background:var(--surface2);border-radius:14px;padding:12px 4px}
+.us-stats div{display:flex;flex-direction:column;align-items:center;gap:1px}
+.us-stats b{font-size:17px;font-variant-numeric:tabular-nums}
+.us-stats span{font-size:12px;color:var(--muted)}
+.us-tips{background:var(--surface2);border-radius:14px;padding:12px 14px}
+.us-tips summary{font-weight:600;cursor:pointer;color:var(--tint)}
+/* buttons, lessons, results */
+.btn{font-weight:600}
+.btn.ghost{background:var(--tint-soft);color:var(--tint)}
+.say.xl{background:var(--tint);box-shadow:0 14px 30px -16px var(--tint)}
+.intro{border-radius:20px;padding:26px 22px;gap:14px}
+.intro .newtag{background:var(--tint-soft);color:var(--tint);font-size:12px;letter-spacing:.02em;text-transform:none;font-weight:600}
+.intro .newtag.love{background:var(--tint-soft)}
+.intro .big,.big{font-weight:600}
+.intro{align-items:center;text-align:center;padding:32px 22px 26px}
+.intro .newtag{align-self:center}
+.intro .prompt{justify-content:center}
+.intro .big{font-size:clamp(52px,15vw,76px);line-height:1.2}
+.intro .huge{font-size:clamp(96px,30vw,140px)}
+.intro .en{font-size:22px}
+.intro .note{text-align:left;align-self:stretch}
+.kind{font-size:22px}
+.progress i,.xpbar i{background:var(--tint)}
+.result .bigrings{width:120px;height:120px}
+.result h1{font-size:34px}
+.badge{background:var(--tint);box-shadow:none}
+.welcome{background:var(--surface);color:var(--ink);box-shadow:var(--shadow)}
+.welcome span{color:var(--muted)}
+.ach .deva{background:var(--tint);box-shadow:none;text-shadow:none}
+.story::before{background:var(--tint)}
+.note-card::before{background:var(--tint)}
+.week .b.on{background:var(--tint)}
+.week .b.goal{background:var(--good)}
+.fchip[aria-pressed="true"]{background:var(--tint);color:var(--on-tint)}
+.combo{color:var(--tint)}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 @media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
 </style>
@@ -2031,7 +2129,7 @@ const storyOpen = st => (S.units[st.after]||0)>=1;
 function practiceView(){
   const ms=myStage(), st=STAGES[ms-1];
   return `<p class="subtitle">You're in Stage ${ms} · ${st.name}</p>
-  <div class="hero talkcard"><span class="eyebrow" style="color:var(--rose);display:flex;gap:6px;align-items:center">${IC.chat} Talk with Claude</span>
+  <div class="hero talkcard" ${Talk.sample?"":"hidden"}><span class="eyebrow" style="color:var(--rose);display:flex;gap:6px;align-items:center">${IC.chat} Talk with Claude</span>
     <h3 style="font-family:var(--f-display);font-weight:400;font-size:22px">Real conversation practice</h3>
     <p style="margin:0">Claude plays Priya, her parents, a chai seller or a tutor, speaks at your level, and corrects your mistakes with a one-line explanation. Save new words straight into your reviews.</p>
     ${Talk.sample?`<button class="btn" data-nav="talk" style="align-self:flex-start">Start talking</button>`:`<small class="muted">Not available in this view. Open the page on claude.ai in a desktop browser to use it.</small>`}</div>
@@ -2521,26 +2619,12 @@ const IC = {
  user:'<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>',
  lock:'<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>',
  chat:'<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/></svg>',
+ chevR:'<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 5.5l6.5 6.5-6.5 6.5"/></svg>',
  info:'<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M12 11v6M12 7.5v.01" stroke-width="2.6"/></svg>',
  chev:'<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>',
  check:'<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>',
  mic:'<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>'
 };
-let ringSeq=0;
-function ringsSVG(cls, anim){
-  const a=S.act[dayKey()]||{it:0,se:0};
-  const vals=[Math.min(1,todayXP()/S.settings.goal), Math.min(1,a.it/20), Math.min(1,a.se/3)];
-  const id="rg"+(++ringSeq), rad=[46,34,22], cols=[["--r1a","--r1b"],["--r2a","--r2b"],["--r3a","--r3b"]];
-  return `<svg class="${cls}" viewBox="0 0 112 112" role="img" aria-label="Today: ${todayXP()} of ${S.settings.goal} XP, ${a.it} of 20 answers, ${a.se} of 3 sessions"><defs>${cols.map((c,i)=>`<linearGradient id="${id}${i}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" style="stop-color:var(${c[0]})"/><stop offset="1" style="stop-color:var(${c[1]})"/></linearGradient>`).join("")}</defs>${rad.map((r,i)=>{ const c=2*Math.PI*r;
-    return `<circle cx="56" cy="56" r="${r}" fill="none" style="stroke:var(${cols[i][0]});stroke-opacity:.22" stroke-width="10"/>`+(vals[i]>0?`<circle class="${anim?"ring-anim":""}" style="--full:${c}" cx="56" cy="56" r="${r}" fill="none" stroke="url(#${id}${i})" stroke-width="10" stroke-linecap="round" stroke-dasharray="${c}" stroke-dashoffset="${c*(1-vals[i])}" transform="rotate(-90 56 56)"/>`:""); }).join("")}</svg>`;
-}
-function ringsCard(){
-  const a=S.act[dayKey()]||{it:0,se:0};
-  return `<div class="rings-card">${ringsSVG("",true)}<div class="ring-legend">
-    <div><span style="color:var(--r1t)">Learn</span><b>${todayXP()}<small> / ${S.settings.goal} XP</small></b></div>
-    <div><span style="color:var(--r2t)">Practise</span><b>${a.it}<small> / 20 answers</small></b></div>
-    <div><span style="color:var(--r3t)">Show up</span><b>${a.se}<small> / 3 sessions</small></b></div></div></div>`;
-}
 
 /* ============================================================
    VIEWS
@@ -2549,16 +2633,15 @@ let view = {name:"path", track:"speak", filter:"all", q:"", gymT:new Set(["hab",
 let session = null;
 try{ const t=localStorage.getItem("dilse-track"); if(t==="read"||t==="speak") view.track=t; }catch(e){}
 
-function daypart(){ const h=new Date().getHours(); return h<5?"night":h<11?"dawn":h<17?"day":h<20?"dusk":"night"; }
-const GREET={dawn:["सुप्रभात","suprabhaat","good morning"],day:["नमस्ते","namaste","good afternoon"],dusk:["शुभ संध्या","shubh sandhya","good evening"],night:["शुभ रात्रि","shubh raatri","good night"]};
+function daypart(){ const h=new Date().getHours(); return h<5?"night":h<12?"dawn":h<17?"day":h<21?"dusk":"night"; }
+const GREET={dawn:["सुप्रभात","Good morning"],day:["नमस्ते","Good afternoon"],dusk:["शुभ संध्या","Good evening"],night:["शुभ रात्रि","Good night"]};
 const TAB_TITLE={path:"Learn",review:"Review",practice:"Practice",book:"Words",profile:"Profile",talk:"Talk",story:""};
 function topbar(){
   const s=streak(), t=TAB_TITLE[view.name];
-  return `<header class="topbar"><div class="tb">
-    <div class="brand">Dil Se <span class="deva grad-text">हिंदी</span></div>
-    <span class="chip flame ${s?"":"off"}" title="Day streak"><span class="sr">Day streak </span>${IC.flame}${s}</span>
-    <span class="chip xp" title="Total XP"><span class="sr">Total XP </span>${IC.star}${S.xp}</span>
-    ${ringsSVG("mini-rings",false)}</div></header>${view.name==="path"? (()=>{ const g=GREET[daypart()]; return `<h1 class="greet"><span class="deva gh">${g[0]}</span><span class="gs">${g[1]}, ${g[2]}. Here's today.</span></h1>`; })() : t?`<h1 class="large-title">${t}</h1>`:""}`;
+  const chips=`<div class="head-chips"><span class="chip flame ${s?"":"off"}" title="Day streak"><span class="sr">Day streak </span>${IC.flame}${s}</span><span class="chip xp" title="Total XP"><span class="sr">Total XP </span>${IC.star}${S.xp}</span></div>`;
+  if(!t) return `<header class="head slim">${chips}</header>`;
+  const cap = view.name==="path" ? (()=>{ const g=GREET[daypart()]; return `<p class="head-cap"><span class="deva">${g[0]}</span> · ${g[1]}</p>`; })() : "";
+  return `<header class="head"><div class="head-text">${cap}<h1 class="large-title">${t}</h1></div>${chips}</header>`;
 }
 function nav(){
   const due=dueItems().length;
@@ -2580,54 +2663,73 @@ function render(){
   else if(view.name==="talk") body=talkView();
   const fk=focusKey();
   const changed = render.last!==view.name; render.last=view.name;
-  app.innerHTML = `${view.name==="path"?`<div class="sky ${daypart()}" aria-hidden="true"></div>`:""}<div class="wrap ${changed?"v-enter":""}">${topbar()}${body}</div>${nav()}`;
+  app.innerHTML = `<div class="wrap ${changed?"v-enter":""}">${topbar()}${body}</div>${nav()}`;
   if(fk){ const el=$(fk); if(el && !el.disabled){ el.focus(); if(el.id==="talk-in"||el.id==="book-search"){ const l=el.value.length; try{el.setSelectionRange(l,l);}catch(e){} } } }
   if(view.name==="talk"){ const c=$("#chat"); if(c && c.lastElementChild) c.lastElementChild.scrollIntoView({block:"nearest"}); }
 }
 
+function goalRing(xp,goal,cls,anim){
+  const v=Math.min(1,xp/goal), r=26, c=2*Math.PI*r;
+  return `<svg class="${cls||"goal-ring"}" viewBox="0 0 64 64" role="img" aria-label="${xp} of ${goal} XP today"><circle cx="32" cy="32" r="${r}" fill="none" style="stroke:var(--fill)" stroke-width="7"/>${v>0?`<circle class="${anim?"ring-anim":""}" style="--full:${c};stroke:var(--tint)" cx="32" cy="32" r="${r}" fill="none" stroke-width="7" stroke-linecap="round" stroke-dasharray="${c}" stroke-dashoffset="${c*(1-v)}" transform="rotate(-90 32 32)"/>`:""}${v>=1?`<path d="M23.5 32.5l5.5 5.5 11.5-11.5" fill="none" style="stroke:var(--tint)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>`:""}</svg>`;
+}
+function nextUnit(track){ return UNITS.find(u=>u.track===(track||"speak") && unitUnlocked(u) && (S.units[u.id]||0)<3); }
 function sceneCard(sc){
   const open=(S.units[sc.after]||0)>=1, best=S.scenes[sc.id]||0, after=UNITS.find(u=>u.id===sc.after);
-  return `<div class="cell scene-cell ${open?"open":"locked"}"><div class="appicon" aria-hidden="true">${IC.chat}</div>
-    <div class="cell-main"><i class="ce">Conversation</i><b>${esc(sc.title)}</b><span>${esc(sc.blurb)}${best?` · Best ${best}%`:""}</span></div>
-    <div class="cell-side">${open?`<button class="pill ${best?"":"go"}" data-scene="${sc.id}">${best?"Replay":"Play"}</button>`:`<span class="lockmsg">${IC.lock}<span class="sr">Unlocks after a lesson of ${esc(after.title)}</span></span>`}</div></div>`;
+  const meta = !open ? `Conversation · unlocks after “${after.title}”` : best ? `Conversation · best ${best}%` : "Conversation · 2 minutes";
+  return `<button class="row ${open?"":"locked"}" ${open?`data-scene="${sc.id}"`:"disabled"}>
+    <span class="glyph-tile chat" aria-hidden="true">${IC.chat}</span>
+    <span class="row-main"><b>${esc(sc.title)}</b><span>${esc(meta)}</span></span>
+    <span class="row-end" aria-hidden="true">${open?IC.chevR:IC.lock}</span></button>`;
 }
 function unitCard(u){
-  const lv=S.units[u.id]||0, open=unitUnlocked(u), done=lv>=3, nlearn=u.items.filter(learned).length, g=[...u.glyph].length;
-  return `<div class="cell ${open?"open":"locked"} ${done?"done":""}">
-    <div class="appicon" aria-hidden="true" style="--g1:${u.grad[0]};--g2:${u.grad[1]};font-size:${g<=2?26:g<=4?19:14}px">${u.glyph}</div>
-    <div class="cell-main"><b>${esc(u.title)}</b><span>${esc(u.blurb)}</span></div>
-    <div class="cell-side">${open?`<button class="info" data-tip="${u.id}" aria-label="Tips for ${esc(u.title)}">${IC.info}</button><button class="pill ${lv===0?"go":""}" data-start="${u.id}">${lv===0?"Start":done?"Practise":"Next"}</button>`
-      :`<span class="lockmsg">${IC.lock}<span class="sr">Locked: finish 2 lessons of the unit above</span></span>`}</div>
-    <div class="cell-meta"><span class="pips" role="img" aria-label="Lesson ${lv} of 3">${[1,2,3].map(i=>`<span class="pip ${lv>=i?"on":""}"></span>`).join("")}</span>${nlearn}/${u.items.length} learned${u.drills.length?` · ${u.drills.length} drills`:""}</div>
-  </div>` + SCENES.filter(sc=>sc.after===u.id).map(sceneCard).join("");
+  const lv=S.units[u.id]||0, open=unitUnlocked(u), done=lv>=3, nl=u.items.filter(learned).length, g=[...u.glyph].length;
+  const isNext = open && !done && nextUnit(u.track)===u;
+  const meta = !open ? "Finish 2 lessons above to unlock" : done ? `Complete · ${nl} of ${u.items.length} learned` : lv ? `Lesson ${lv+1} of 3 · ${nl} of ${u.items.length} learned` : `${u.items.length} ${u.track==="read"?"letters":"phrases"}${u.drills.length?` · ${u.drills.length} drills`:""}`;
+  const end = !open ? IC.lock : done ? `<span class="done-badge">${IC.check}</span>` : IC.chevR;
+  return `<button class="row ${open?"":"locked"} ${done?"done":""} ${isNext?"next":""}" ${open?`data-unit="${u.id}"`:"disabled"}>
+    <span class="glyph-tile" aria-hidden="true" style="font-size:${g<=2?22:g<=4?16:12}px">${u.glyph}</span>
+    <span class="row-main"><b>${esc(u.title)}</b><span>${esc(meta)}</span>${open&&!done&&lv?`<span class="thin" aria-hidden="true"><i style="width:${lv/3*100}%"></i></span>`:""}</span>
+    <span class="row-end" aria-hidden="true">${end}</span></button>` + SCENES.filter(sc=>sc.after===u.id).map(sceneCard).join("");
+}
+function unitSheet(uid){
+  const u=UNITS.find(x=>x.id===uid); const lv=S.units[u.id]||0, nl=u.items.filter(learned).length, done=lv>=3;
+  $("#modal-root").innerHTML=`<div class="modal" data-act="closemodal"><div class="sheet" role="dialog" aria-modal="true" aria-labelledby="us-h" data-stop>
+    <div class="us-head"><span class="glyph-tile lg" aria-hidden="true" style="font-size:${[...u.glyph].length<=2?30:22}px">${u.glyph}</span><div><h2 id="us-h">${esc(u.title)}</h2><p class="muted">${esc(u.blurb)}</p></div></div>
+    <div class="us-stats"><div><b>${Math.min(lv,3)} of 3</b><span>Lessons</span></div><div><b>${nl} of ${u.items.length}</b><span>Learned</span></div><div><b>${u.drills.length}</b><span>Drills</span></div></div>
+    <button class="btn block" data-start="${u.id}">${lv===0?"Start lesson 1":done?"Practise again":`Start lesson ${lv+1}`}</button>
+    <details class="us-tips"><summary>Grammar and culture notes</summary><div class="gbody">${u.tip}</div></details>
+  </div></div>`;
+  const b=$("#modal-root .sheet .btn"); if(b) b.focus();
 }
 function todayCard(){
-  if(!S.stats.lessons) return `<div class="today">${ringsCard()}</div>`;
-  const due=dueItems().length;
-  const next=UNITS.find(u=>u.track==="speak" && unitUnlocked(u) && (S.units[u.id]||0)<3);
-  const story=STORIES.find(st=>storyOpen(st) && !S.stories[st.id]);
-  const rows=[];
-  rows.push(`<div class="trow"><span>${due?`Review <b>${due}</b> due ${due===1?"item":"items"}`:"Reviews: all caught up"}</span>${due?`<button class="btn teal sm" data-act="review">Review</button>`:`<span class="tick" aria-label="done">${IC.check}</span>`}</div>`);
-  if(next) rows.push(`<div class="trow"><span>Next lesson: <b>${esc(next.title)}</b></span><button class="btn sm" data-start="${next.id}">Go</button></div>`);
-  if(story) rows.push(`<div class="trow"><span>New story: <b>${esc(story.title)}</b> <span class="lvl">${story.level}</span></span><button class="btn ghost sm" data-story="${story.id}">Read</button></div>`);
-  if(Talk.sample && S.stats.lessons>=3) rows.push(`<div class="trow"><span>Chat in Hindi for five minutes</span><button class="btn ghost sm" data-nav="talk">Talk</button></div>`);
-  return `<div class="today">${ringsCard()}<div class="section-title" style="margin:18px 4px 8px"><h2>Up next</h2></div><div class="group">${rows.join("")}</div></div>`;
+  const due=dueItems().length, next=nextUnit("speak"), story=STORIES.find(st=>storyOpen(st)&&!S.stories[st.id]);
+  const xp=todayXP(), goal=S.settings.goal, st=streak();
+  const lv=next?(S.units[next.id]||0):0;
+  const cta = next ? `<button class="btn block cta" data-start="${next.id}"><span>${lv===0&&!S.stats.lessons?"Start":"Continue"}: ${esc(next.title)}</span><small>Lesson ${lv+1} of 3</small></button>`
+                   : `<button class="btn block cta" data-act="${due?"review":"weak"}"><span>${due?"Review what's due":"Practise your weakest words"}</span></button>`;
+  const links=[];
+  if(due && next) links.push(`<button class="link" data-act="review">Review ${due} due</button>`);
+  if(story) links.push(`<button class="link" data-story="${story.id}">Read “${esc(story.title)}”</button>`);
+  return `<section class="today-card">
+    <div class="tc-top">${goalRing(xp,goal)}<div class="tc-stats"><b>${xp}<small> / ${goal} XP today</small></b><span>${xp>=goal?"Daily goal reached. Nice.":`${goal-xp} XP to today's goal`}</span><span>${st?`${st}-day streak`:"Start your streak today"}</span></div></div>
+    ${cta}${links.length?`<div class="tc-links">${links.join("")}</div>`:""}
+  </section>`;
 }
-// Shown only in the home-screen build, in Safari, before it's installed
 function installHint(){
   if(!window.__PWA) return "";
+  let hidden=false; try{ hidden=localStorage.getItem("dilse-install-hidden")==="1"; }catch(e){}
   const ios=/iPhone|iPad|iPod/.test(navigator.userAgent), standalone=navigator.standalone||matchMedia("(display-mode: standalone)").matches;
-  if(standalone) return "";
-  return `<div class="install"><img src="icons/icon-192.png" alt=""><div><b>Put Dil Se on your home screen</b><small>${ios?"Tap the Share button, then “Add to Home Screen”.":"Open your browser menu, then “Install app” or “Add to Home screen”."}</small></div></div>`;
+  if(standalone||hidden) return "";
+  return `<div class="install"><img src="icons/icon-192.png" alt=""><div><b>Add to your home screen</b><small>${ios?"Tap Share, then “Add to Home Screen”.":"Open the browser menu, then “Install app”."}</small></div><button class="x" data-act="hideinstall" aria-label="Dismiss">${IC.close}</button></div>`;
 }
 function pathView(){
   const units=UNITS.filter(u=>u.track===view.track);
   const nm = S.settings.name ? esc(S.settings.name) : "her";
   const nSpeak=UNITS.filter(u=>u.track==="speak").length;
-  const intro = S.stats.lessons? "" : `<div class="banner welcome"><div class="t"><b>Learn Hindi for ${nm}</b><span>A path from first words to fluency: ${nSpeak} units in ${STAGES.length} stages, plus reading, stories, conversations and reviews timed so words stick. Start with "Hello & basics" below. You can add her name in Profile.</span></div></div>`;
+  const intro = S.stats.lessons ? "" : `<p class="lede">Hindi for ${nm}, from first words to real conversations. Short lessons, reviews timed so words stick, and stories to read together.</p>`;
   const seg=`<div class="seg" role="group" aria-label="Track">
-    <button data-track="speak" aria-pressed="${view.track==="speak"}">Speak<small>${nSpeak} units · ${STAGES.length} stages</small></button>
-    <button data-track="read" aria-pressed="${view.track==="read"}">Read<small><span class="deva">देवनागरी</span> script</small></button></div>`;
+    <button data-track="speak" aria-pressed="${view.track==="speak"}">Speak</button>
+    <button data-track="read" aria-pressed="${view.track==="read"}">Read <span class="deva">देवनागरी</span></button></div>`;
   let body;
   if(view.track==="speak"){
     const ms=myStage();
@@ -2635,16 +2737,14 @@ function pathView(){
       const us=units.filter(u=>u.stage===st.n);
       const done=us.filter(u=>(S.units[u.id]||0)>=3).length;
       const open=us.some(unitUnlocked);
-      const here=ms===st.n;
       return `<section class="stage ${open?"":"locked"}"><div class="stage-h">
-        <div class="sh-top"><h2>${esc(st.name)}</h2><span class="tag">Stage ${st.n} · ${st.cefr}</span>${here?'<span class="tag here">You are here</span>':""}</div>
-        <p>${esc(st.can)}</p>
+        <div class="sh-row"><div><p class="caption">Stage ${st.n} · ${st.cefr}${ms===st.n?" · You're here":""}</p><h2>${esc(st.name)}</h2></div><span class="count">${done}/${us.length}</span></div>
+        <p class="can">${esc(st.can)}</p>
         <div class="rekha" role="img" aria-label="${done} of ${us.length} units complete">${us.map(u=>{ const lv=S.units[u.id]||0; return `<i style="--h:${lv}" class="${lv>=3?"full":lv?"part":""}"></i>`; }).join("")}</div>
-        <small class="muted">${done} of ${us.length} units complete</small></div>
-        <div class="group">${us.map(unitCard).join("")}</div></section>`;
+        </div><div class="group">${us.map(unitCard).join("")}</div></section>`;
     }).join("");
   } else body=`<div class="group">${units.map(unitCard).join("")}</div>`;
-  return installHint()+intro+todayCard()+seg+body+`<p class="subtitle" style="margin-top:6px">Each unit has 3 lessons. Finish 2 to unlock the next one.</p>`;
+  return intro+todayCard()+installHint()+seg+body+`<p class="foot-note">Each unit has 3 lessons. Finish 2 to unlock the next.</p>`;
 }
 
 function reviewView(){
@@ -3212,7 +3312,7 @@ function showResult(r){
     ? `You chose the right words ${Math.round(r.acc*100)}% of the time on the first try. Replay any time; the best score is kept.`
     : `${r.newly?`${r.newly} new ${r.newly===1?"item":"items"} introduced. `:""}${r.strengthened?`${r.strengthened} ${r.strengthened===1?"item":"items"} got stronger. `:""}They'll come back for review just before you'd forget them.`;
   $("#app").innerHTML = `<div class="wrap"><div class="result">
-    ${ringsSVG("bigrings",true)}
+    ${goalRing(todayXP(),S.settings.goal,"bigrings",true)}
     <span class="big deva">${sub}</span>
     <h1>${head}</h1>
     ${loveNote}
@@ -3260,7 +3360,7 @@ const modalOpen = ()=>!!$("#modal-root").innerHTML;
    EVENTS
    ============================================================ */
 document.addEventListener("click", e=>{
-  const t=e.target.closest("[data-act],[data-nav],[data-track],[data-start],[data-scene],[data-story],[data-saveline],[data-saveword],[data-talk],[data-copy],[data-gymt],[data-numr],[data-tip],[data-opt],[data-ask],[data-saytext],[data-say],[data-place],[data-unplace],[data-ml],[data-mr],[data-filter],[data-reveal]");
+  const t=e.target.closest("[data-act],[data-nav],[data-track],[data-start],[data-scene],[data-unit],[data-story],[data-saveline],[data-saveword],[data-talk],[data-copy],[data-gymt],[data-numr],[data-tip],[data-opt],[data-ask],[data-saytext],[data-say],[data-place],[data-unplace],[data-ml],[data-mr],[data-filter],[data-reveal]");
   if(!t) return;
   if(t.dataset.act==="closemodal" && e.target.closest("[data-stop]") && !e.target.closest('.btn[data-act="closemodal"]')) return;
   const d=t.dataset;
@@ -3269,7 +3369,8 @@ document.addEventListener("click", e=>{
   if(d.say){ say(H(ITEM[d.say])); return; }
   if(d.nav){ view.name=d.nav; render(); window.scrollTo(0,0); return; }
   if(d.track){ view.track=d.track; try{localStorage.setItem("dilse-track",d.track);}catch(e){} render(); return; }
-  if(d.start){ startLesson(d.start); if(!modalOpen()) autoSay(session.queue[0]); return; }
+  if(d.unit){ unitSheet(d.unit); return; }
+  if(d.start){ closeModal(true); startLesson(d.start); if(!modalOpen()) autoSay(session.queue[0]); return; }
   if(d.scene){ startScene(d.scene); return; }
   if(d.story){ const st=STORIES.find(x=>x.id===d.story); view.name="story"; view.story=d.story; view.storyRom=(st.level==="A1"||st.level==="A2"); render(); window.scrollTo(0,0); return; }
   if(d.saveline!==undefined){ const st=STORIES.find(x=>x.id===view.story); const l=st&&st.lines[+d.saveline]; if(l) addCustom(l[0],l[1],l[2]); return; }
@@ -3302,6 +3403,7 @@ document.addEventListener("click", e=>{
   }
   switch(d.act){
     case "check": if(s && canCheck(s.queue[s.i])) submit(false); break;
+    case "hideinstall": try{ localStorage.setItem("dilse-install-hidden","1"); }catch(err){} render(); break;
     case "exportp": { let code=""; try{ code=btoa(unescape(encodeURIComponent(JSON.stringify(S)))); }catch(err){}
       const fail=()=>{ const t=$("#importp"); if(t){ t.value=code; t.select(); } toast("Couldn't copy here. The code is selected in the box below; copy it from there."); };
       try{ navigator.clipboard.writeText(code).then(()=>toast("Progress code copied"), fail); }catch(err){ fail(); } } break;
@@ -3373,10 +3475,6 @@ document.addEventListener("keydown", e=>{
   }
 });
 
-// Sky parallax: drifts slower than the page and fades out as you scroll
-let skyTick=false;
-addEventListener("scroll",()=>{ if(skyTick) return; skyTick=true; requestAnimationFrame(()=>{ skyTick=false; const sk=document.querySelector(".sky"); if(!sk) return;
-  const y=scrollY; sk.style.opacity=String(Math.max(0,1-y/420)); if(!matchMedia("(prefers-reduced-motion: reduce)").matches) sk.style.transform=`translateY(${-y*.25}px)`; }); },{passive:true});
 render();
 initAudio();
 initCloud();
