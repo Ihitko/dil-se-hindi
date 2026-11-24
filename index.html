@@ -2459,7 +2459,9 @@ function webSpeak(texts, slow){
       AudioS.keep.forEach(u=>ss.speak(u));
       if(ss.paused) ss.resume();
     };
-    if(ss.speaking || ss.pending){ ss.cancel(); setTimeout(go,90); } else go();   // WebKit drops speech started in the same tick as cancel()
+    if(ss.speaking || ss.pending) ss.cancel();
+    go();
+    setTimeout(()=>{ if(!ss.speaking && !ss.pending) go(); },250);   // WebKit drops speech started in the same tick as cancel()
   }catch(e){}
 }
 function say(text, slow){
@@ -2477,7 +2479,7 @@ function say(text, slow){
 }
 // iOS only allows speech after a tap; prime it silently on the very first touch
 addEventListener("pointerdown",function primeSpeech(){ removeEventListener("pointerdown",primeSpeech,true);
-  try{ if(AudioS.web && !AudioS.tts){ const u=new SpeechSynthesisUtterance(" "); u.volume=0; u.lang="hi-IN"; speechSynthesis.speak(u); } }catch(e){} },true);
+  try{ if(AudioS.web && !AudioS.tts){ const u=new SpeechSynthesisUtterance("."); u.volume=0; u.rate=2; u.lang="hi-IN"; speechSynthesis.speak(u); } }catch(e){} },true);
 
 /* ============================================================
    HELPERS
@@ -2590,8 +2592,10 @@ function burst(x,y,opts){
 function burstAt(el,opts){ if(!el) return; const r=el.getBoundingClientRect(); burst(r.left+r.width/2, r.top+r.height/2, opts); }
 // A small temple-bell chime (ghanti) for right answers and finished sessions
 const Bell={ctx:null};
+const IOS = /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform==="MacIntel" && navigator.maxTouchPoints>1);
 function chime(kind){
   if(!S.settings.sound) return;
+  if(IOS && AudioS.web && !AudioS.tts && kind!=="done") return;
   try{
     const C=Bell.ctx||(Bell.ctx=new (window.AudioContext||window.webkitAudioContext)()); if(C.state==="suspended") C.resume();
     const t=C.currentTime, seq= kind==="done"? [659.25,987.77,1318.5] : [1046.5];
@@ -3130,6 +3134,7 @@ function advance(){
   const ex=s.queue[s.i], g=G(), card=$(".qcard");
   const retry = ex && ex.t==="ask" && s.state==="feedback" && !s.feedback.ok;
   if(!g || !card || retry) return advanceNow();
+  const nx=s.queue[s.i+1]; if(nx){ autoSay(nx); s._preSaid=true; }   // iPhone only allows speech that starts inside the tap
   s._leaving=true;
   g.to(card,{x:-40,rotation:-3.5,autoAlpha:0,duration:.2,ease:"power2.in",onComplete:()=>{ s._leaving=false; if(session===s) advanceNow(); }});
 }
@@ -3393,7 +3398,7 @@ function advanceNow(){
   s.i++; s.state="answer"; s.feedback=null;
   if(s.i>=s.queue.length) return finish();
   renderSession(true);
-  autoSay(s.queue[s.i]);
+  if(s._preSaid) s._preSaid=false; else autoSay(s.queue[s.i]);
 }
 
 function finish(){
