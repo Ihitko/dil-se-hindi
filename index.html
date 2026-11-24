@@ -2454,8 +2454,9 @@ function hasAudio(){ return !AudioS.denied && !!(AudioS.tts || AudioS.web); }
 function webSpeak(texts, slow){
   try{
     const ss=speechSynthesis;
+    if(slow) texts=texts.flatMap(t=>t.split(/\s+/).filter(Boolean));
     const go=()=>{
-      AudioS.keep=texts.map(t=>{ const u=new SpeechSynthesisUtterance(t); u.lang=AudioS.voice?AudioS.voice.lang:"hi-IN"; if(AudioS.voice) u.voice=AudioS.voice; u.rate=slow?0.6:0.85; u.volume=1; return u; }); // kept referenced so the browser can't garbage-collect them mid-sentence
+      AudioS.keep=texts.map(t=>{ const u=new SpeechSynthesisUtterance(t); u.lang=AudioS.voice?AudioS.voice.lang:"hi-IN"; if(AudioS.voice) u.voice=AudioS.voice; u.rate=slow?0.5:0.9; u.volume=1; return u; }); // kept referenced so the browser can't garbage-collect them mid-sentence
       AudioS.keep.forEach(u=>ss.speak(u));
       if(ss.paused) ss.resume();
     };
@@ -2467,7 +2468,7 @@ function webSpeak(texts, slow){
 function say(text, slow){
   if(AudioS.denied || !text) return;
   if(AudioS.tts){
-    AudioS.tts.speak(text,{language:"hi", rate: slow?0.7:0.92}).catch(e=>{
+    AudioS.tts.speak(text,{language:"hi", rate: slow?0.55:0.95}).catch(e=>{
       const c=e&&e.code;
       if(c==="not_granted"){ AudioS.tts=null; AudioS.denied=true; rerender(); }          // the viewer switched reading aloud off: respect it
       else if(c==="unavailable"){ AudioS.tts=null; rerender(); webSpeak([text],slow); }
